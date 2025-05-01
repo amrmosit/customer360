@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+# To use path properly
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,11 +26,12 @@ SECRET_KEY = 'django-insecure-4y7@$j#b8j6%9$2sygyz7iys!p5^p0p&*t3q=!#^q88%()c7kk
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
+# Allowing host/domain names that this Django site can serve
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
+# A list of strings designating all applications that are enabled in this Django installation.
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -38,6 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+# Adding a list of trusted origins for unsafe requests like POST
+# for requests that include the Origin header, Django CSRF protection requries that the header match the origin present in the Host header
+CSRF_TRUSTED_ORIGINS = ['https://*cognitiveclass.ai']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -115,6 +121,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+# To definies the additional locations the staticfiles app will traverse if FileSystemFinder is enabled in case of useing collectstatic or findstatic
+STATIC_DIRS = (
+    os.path.join(BASE_DIR, "static/"),
+)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
