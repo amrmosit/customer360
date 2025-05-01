@@ -1,7 +1,7 @@
-{{% extends 'base.html' %}}
+{% extends 'base.html' %}
 {% load static %}
 
-{{% block content %}}
+{% block content %}
 <html>
     <head>
         <title>Add a Customer</title>
@@ -9,7 +9,7 @@
     <body>
         <h1>Add a new Customer</h1>
         <form class="form" method="post" action="/create/">
-            {% csrf_Token %}
+            {% csrf_token %}
             <div class="form-group">
                 <label for="Name">Name</label>
                 <input type="text" name="name" required>
@@ -31,4 +31,4 @@
         </form>
     </body>
 </html>
-{{% endblock content %}}
+{% endblock content %}

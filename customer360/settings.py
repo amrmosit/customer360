@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'customer360'
 ]
 # Adding a list of trusted origins for unsafe requests like POST
 # for requests that include the Origin header, Django CSRF protection requries that the header match the origin present in the Host header
@@ -120,11 +121,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 # To definies the additional locations the staticfiles app will traverse if FileSystemFinder is enabled in case of useing collectstatic or findstatic
-STATIC_DIRS = (
-    os.path.join(BASE_DIR, "static/"),
-)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
